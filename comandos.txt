@@ -1,0 +1,10 @@
+C++
+g++ -o servidor servidor.cpp -lws2_32
+g++ -o cliente cliente.cpp -lws2_32
+
+C
+gcc -o servidor servidor.c -lws2_32 
+gcc -o cliente cliente.c -lws2_32
+
+Python
+python .\cliente3.py
