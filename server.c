@@ -106,9 +106,6 @@ while (running){
         // Recibir longitud y comando de cliente
         recv(cliente, buffer, sizeof(buffer), 0);
 
-
-        printf("\nMensaje recibido %s",buffer);
-
         //generador de semilla del rand, la cual toma los segundos del time
         srand(time(NULL));
 
@@ -163,6 +160,8 @@ while (running){
 
 
     }
+    
+    memset(buffer, 0, sizeof(buffer)); 
 
     if (cliente == INVALID_SOCKET)
     {

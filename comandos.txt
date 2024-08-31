@@ -1,10 +1,11 @@
-C++
-g++ -o servidor servidor.cpp -lws2_32
-g++ -o cliente cliente.cpp -lws2_32
+
+Comandos para compilar  en C:
 
 C
-gcc -o servidor servidor.c -lws2_32 
+gcc -o server server.c -lws2_32 
 gcc -o cliente cliente.c -lws2_32
 
+Comando para ejecutar un código Python:
+
 Python
-python .\cliente3.py
+python .\cliente2.py
