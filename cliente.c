@@ -44,6 +44,7 @@ int main() {
 
     // Menu 
     while (1) {
+
         printf("\nElige una opcion:\n1. Generar nombre de usuario\n2. Generar contrasenia\n3. Salir\n> ");
 
         scanf("%d", &opcion);
@@ -71,31 +72,26 @@ int main() {
             sprintf(mensaje, "USUARIO %d", longitud);
         } else if (opcion == 2) {
             sprintf(mensaje, "CONTRASENA %d", longitud);
-        } else {
-            printf("Opcion no valida.\n");
-            system("pause");
-            system("cls");
+        }else{
+            sprintf(mensaje,"OPCION INVALIDA");
+        }
+
+        // Enviar solicitud al servidor
+        if (send(cliente, mensaje, strlen(mensaje), 0) < 0) {
+            printf("Error al enviar el mensaje.\n");
             continue;
         }
 
-        if (opcion == 1 || opcion == 2){
+        // Recibir respuesta del servidor
+        tamRespuesta = recv(cliente, respuesta, sizeof(respuesta), 0);
 
-            // Enviar solicitud al servidor
-            if (send(cliente, mensaje, strlen(mensaje), 0) < 0) {
-                printf("Error al enviar el mensaje.\n");
-                continue;
-            }
-
-            // Recibir respuesta del servidor
-            tamRespuesta = recv(cliente, respuesta, sizeof(respuesta), 0);
-
-            if (tamRespuesta == SOCKET_ERROR) {
-                printf("Error al recibir la respuesta.\n");
-            } else {
-                respuesta[tamRespuesta] = '\0'; //Limpiamos basura
-                printf("\nRespuesta del servidor: %s\n", respuesta);
-            }
+        if (tamRespuesta == SOCKET_ERROR) {
+            printf("Error al recibir la respuesta.\n");
+        } else {
+            respuesta[tamRespuesta] = '\0'; //Limpiamos basura
+            printf("\nRespuesta del servidor: %s\n", respuesta);
         }
+        
     }
 
     closesocket(cliente);

@@ -100,6 +100,8 @@ while (running){
 
     while (strncmp(buffer, "SALIDA", 6) != 0)
     {  
+
+
         // Limpia el buffer estableciendo todos los bytes a 0
         memset(buffer, 0, sizeof(buffer)); 
 
@@ -156,6 +158,9 @@ while (running){
                 char *mensajeError = "Longitud de contrasena invalida.";
                 send(cliente, mensajeError, strlen(mensajeError), 0);
             }
+        }else{
+                char *mensajeError = "Opcion incorrecta";
+                send(cliente, mensajeError, strlen(mensajeError), 0);
         }
 
 

@@ -32,9 +32,7 @@ def main():
             elif opcion == '2':
                 mensaje = f"CONTRASENA {longitud}"
             else:
-                print("Opción no válida.")
-                input("Presiona Enter para continuar...")
-                continue
+                mensaje = f"OPCION INVALIDA"
 
             # Enviar solicitud al servidor en bytes
             cliente.sendall(mensaje.encode())
